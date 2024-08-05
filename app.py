@@ -145,8 +145,7 @@ def main():
         # Clean up
         browser.close()
 
-if __name__ == '__main__':
-    main()
+
 @app.route('/')
 def index():
     return render_template('index.html')
