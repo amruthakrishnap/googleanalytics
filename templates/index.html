@@ -1,201 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Website Analytics Simulation</title>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2BYZNSF0C5"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-2BYZNSF0C5');
-
-    // Function to send a page view with dummy data
-    function sendFakePageView(pageTitle, screenName) {
-      gtag('event', 'page_view', {
-        'page_title': pageTitle,
-        'screen_name': screenName
-      });
-    }
-
-    // Generate dummy data for real-time simulation
-    function generateFakePageViews() {
-      const pages = [
-        { title: 'Home Page', screen: 'home' },
-        { title: 'About Us', screen: 'about' },
-        { title: 'Contact Us', screen: 'contact' },
-        { title: 'Our Services', screen: 'services' },
-        { title: 'Our Products', screen: 'products' },
-        { title: 'Blog', screen: 'blog' },
-        { title: 'FAQ', screen: 'faq' },
-        { title: 'Careers', screen: 'careers' },
-        { title: 'Testimonials', screen: 'testimonials' },
-        { title: 'Privacy Policy', screen: 'privacy_policy' }
-      ];
-
-      for (let i = 0; i < 100; i++) {
-        const randomIndex = Math.floor(Math.random() * pages.length);
-        const page = pages[randomIndex];
-        sendFakePageView(page.title, page.screen);
-      }
-    }
-
-    // Generate fake user metrics
-    function generateFakeUserMetrics() {
-      const userProperties = ['new_user', 'returning_user', 'subscribed_user'];
-      const sources = ['direct', 'organic_search', 'referral', 'social'];
-      const locations = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix'];
-      const ages = ['18-24', '25-34', '35-44', '45-54', '55-64', '65+'];
-      const browsers = ['Chrome', 'Firefox', 'Safari', 'Edge', 'Opera'];
-      const countries = ['USA', 'Canada', 'UK', 'Australia', 'Germany'];
-      const emails = ['user1@example.com', 'user2@example.com', 'user3@example.com', 'user4@example.com', 'user5@example.com'];
-
-      for (let i = 0; i < 40; i++) {
-        const randomUserProperty = userProperties[Math.floor(Math.random() * userProperties.length)];
-        const randomSource = sources[Math.floor(Math.random() * sources.length)];
-        const randomLocation = locations[Math.floor(Math.random() * locations.length)];
-        const randomAge = ages[Math.floor(Math.random() * ages.length)];
-        const randomBrowser = browsers[Math.floor(Math.random() * browsers.length)];
-        const randomCountry = countries[Math.floor(Math.random() * countries.length)];
-        const randomEmail = emails[Math.floor(Math.random() * emails.length)];
-        const randomDate = new Date(+(new Date()) - Math.floor(Math.random() * 10000000000)); // Random date in past
-
-        gtag('event', 'user_engagement', {
-          'user_property': randomUserProperty,
-          'user_source': randomSource,
-          'user_location': randomLocation,
-          'user_age': randomAge,
-          'user_browser': randomBrowser,
-          'user_country': randomCountry,
-          'user_email': randomEmail,
-          'event_name': 'user_activity',
-          'engagement_time': Math.floor(Math.random() * 300) + 30,  // Engagement time between 30s to 330s
-          'event_date': randomDate.toISOString()
-        });
-      }
-    }
-
-    // Trigger the fake page view generation and user metrics when the page loads
-    window.onload = function() {
-      generateFakePageViews();
-      generateFakeUserMetrics();
-    };
-
-    // Function to refresh the page with pop animation
-    function refreshPage() {
-      const refreshButton = document.getElementById('refreshButton');
-      refreshButton.classList.add('pop');
-      setTimeout(() => {
-        window.location.reload();
-      }, 500); // Wait for the animation to complete
-    }
-  </script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
-      color: #333;
-      margin: 0;
-      padding: 20px;
-      overflow-x: hidden;
-    }
-    h1 {
-      background: #0073e6;
-      color: white;
-      padding: 10px;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    p {
-      background: white;
-      padding: 10px;
-      border-radius: 5px;
-      margin-bottom: 20px;
-    }
-    .button {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 5px;
-      color: white;
-      background-color: #0073e6;
-      border: none;
-      border-radius: 5px;
-      text-decoration: none;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
-    }
-    .button:hover {
-      background-color: #005bb5;
-      transform: scale(1.05);
-    }
-    .button:active {
-      transform: scale(0.95);
-    }
-    .page-content {
-      display: none;
-      padding: 20px;
-      border-radius: 5px;
-      color: white;
-      font-size: 24px;
-      text-align: center;
-      height: 300px;
-      background-size: cover;
-      background-position: center;
-    }
-    .home-content { background-image: url('home-bg.jpg'); }
-    .about-content { background-image: url('about-bg.jpg'); }
-    .contact-content { background-image: url('contact-bg.jpg'); }
-    .services-content { background-image: url('services-bg.jpg'); }
-    .products-content { background-image: url('products-bg.jpg'); }
-    .blog-content { background-image: url('blog-bg.jpg'); }
-    .faq-content { background-image: url('faq-bg.jpg'); }
-    .careers-content { background-image: url('careers-bg.jpg'); }
-    .testimonials-content { background-image: url('testimonials-bg.jpg'); }
-    .privacy_policy-content { background-image: url('privacy-policy-bg.jpg'); }
-    .pop {
-      animation: pop 0.5s ease;
-    }
-    @keyframes pop {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper</title>
 </head>
 <body>
-  <h1>Website Analytics Simulation</h1>
-  <p>This Website Created to Test Google Analytics Events For Kashish</p>
-  <p>Additional user engagement metrics are also generated for simulation purposes.</p>
+    <h1>Web Scraper</h1>
+    <form id="scrapeForm">
+        <label for="link">Link:</label>
+        <input type="text" id="link" name="link" required>
+        <button type="submit">Run</button>
+    </form>
+    <div id="status"></div>
+    
+    <script>
+        document.getElementById('scrapeForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const link = document.getElementById('link').value;
+            const statusDiv = document.getElementById('status');
 
-  <button class="button" onclick="showPage('home')">Home</button>
-  <button class="button" onclick="showPage('about')">About Us</button>
-  <button class="button" onclick="showPage('contact')">Contact Us</button>
-  <button class="button" onclick="showPage('services')">Our Services</button>
-  <button class="button" onclick="showPage('products')">Our Products</button>
-  <button class="button" onclick="showPage('blog')">Blog</button>
-  <button class="button" onclick="showPage('faq')">FAQ</button>
-  <button class="button" onclick="showPage('careers')">Careers</button>
-  <button class="button" onclick="showPage('testimonials')">Testimonials</button>
-  <button class="button" onclick="showPage('privacy_policy')">Privacy Policy</button>
-  
-  <button id="refreshButton" class="button" onclick="refreshPage()">Refresh Page</button>
+            statusDiv.textContent = 'Running...';
 
-  <div id="content" class="page-content"></div>
+            try {
+                const response = await fetch('/scrape', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ link })
+                });
 
-  <script>
-    function showPage(page) {
-      const contentDiv = document.getElementById('content');
-      contentDiv.style.display = 'block';
-      contentDiv.className = 'page-content ' + page + '-content';
-      contentDiv.innerHTML = 'Welcome to ' + capitalizeFirstLetter(page.replace('_', ' ')) + ' Page';
-    }
+                const result = await response.json();
 
-    function capitalizeFirstLetter(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-  </script>
+                if (result.status === 'success') {
+                    statusDiv.textContent = result.message;
+                } else {
+                    statusDiv.textContent = `Error: ${result.message}`;
+                }
+            } catch (error) {
+                statusDiv.textContent = `Error: ${error.message}`;
+            }
+        });
+    </script>
 </body>
 </html>
