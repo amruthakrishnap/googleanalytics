@@ -1,4 +1,4 @@
 flask==2.3.2
 playwright==1.38.0
-supabase-py==0.7.5
+supabase
 beautifulsoup4==4.12.2
